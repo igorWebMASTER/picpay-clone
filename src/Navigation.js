@@ -2,6 +2,8 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 
+import PayButton from "./components/PayButton";
+
 import HomeScreen from "./screens/Home";
 import WalletScreen from "./screens/Wallet";
 import PayScreen from "./screens/Pay";
@@ -15,27 +17,48 @@ const icons = {
   },
   Wallet: {
     lib: AntDesign,
-    name: "credicard",
+    name: "creditcard",
+  },
+  Pay: {
+    lib: AntDesign,
+    name: "creditcard",
   },
   Notifications: {
     lib: Ionicons,
-    name: "ios-notification-outline",
+    name: "ios-notifications-outline",
   },
   Settings: {
     lib: AntDesign,
-    name: "settings",
+    name: "setting",
   },
 };
 
 export default function Navigation() {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
+      screenOptions={({ route, navigation }) => ({
+        tabBarIcon: ({ color, size, focused }) => {
+          if (route.name === "Pay") {
+            return (
+              <PayButton
+                onPress={() => navigation.navigate("Pay")}
+                focused={focused}
+              />
+            );
+          }
+
           const { lib: Icon, name } = icons[route.name];
           return <Icon name={name} size={size} color={color} />;
         },
       })}
+      tabBarOptions={{
+        style: {
+          backgroundColor: "#131418",
+          borderTopColor: "rgba(255, 255, 0.2)",
+        },
+        activeTintColor: "#FFF",
+        inactiveTintColor: "#92929c",
+      }}
     >
       <Tab.Screen
         name="Home"
@@ -51,25 +74,26 @@ export default function Navigation() {
           title: "Carteira",
         }}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Pay"
         component={PayScreen}
         options={{
-          title: "Pagar",
-        }}
-      /> */}
-      <Tab.Screen
-        name="Ajustes"
-        component={PayScreen}
-        options={{
-          title: "Settings",
+          title: "",
         }}
       />
+
       <Tab.Screen
         name="Notifications"
         component={PayScreen}
         options={{
-          title: "Notifications",
+          title: "Notificações",
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={PayScreen}
+        options={{
+          title: "Ajustes",
         }}
       />
     </Tab.Navigator>
