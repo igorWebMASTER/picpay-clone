@@ -29,7 +29,7 @@ const items = [
   {
     key: String(Math.random()),
     img: img4,
-    label: "Cód de Barras",
+    label: "Sky",
   },
   {
     key: String(Math.random()),
@@ -53,7 +53,7 @@ export default function Suggestions() {
       {items.map((item) => (
         <Option key={item.key}>
           <Img source={item.img} />
-          <Label>item.label</Label>
+          <Label>{item.label}</Label>
         </Option>
       ))}
     </Container>

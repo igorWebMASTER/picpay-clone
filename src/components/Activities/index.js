@@ -36,21 +36,21 @@ export default function Activities() {
           <CardHeader>
             <Avatar source={avatar} />
             <Description>
-              <Bold>Voce</Bold> pagou a <Bold>@igorribeiro</Bold>
+              <Bold>Voce</Bold> pagou a <Bold>@nubank</Bold>
             </Description>
           </CardHeader>
 
           <CardBody>
-            <UserName> Mateus Silva</UserName>
+            <UserName> Igor Ribeiro</UserName>
           </CardBody>
 
           <CardFooter>
             <Details>
-              <Value>R$ 18,00</Value>
+              <Value>R$ 169,90</Value>
 
               <Divider />
               <Feather name="lock" color="#fff" />
-              <Date> há 2 anos</Date>
+              <Date> há 2 dias</Date>
             </Details>
 
             <Actions>
